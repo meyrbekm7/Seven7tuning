@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEVEN 7 TUNING — Chery Original Ehtiyot Qismlari</title>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Font (Inter & Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       1. GLOBAL VA MINIMALIST DIZAYN
+       ========================================== */
+    :root {
+      --bg-dark: #0f1115;
+      --bg-card: #181b22;
+      --bg-input: #21252f;
+      --accent-green: #00ff66;
+      --accent-green-hover: #00cc52;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Animatsiyalar */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 102, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(0, 255, 102, 0.5); }
+    }
+
+    .animate-fade {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Header Navigatsiya */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(15, 17, 21, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent-green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-green);
+    }
+
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+
+    .user-badge i {
+      color: var(--accent-green);
+    }
+
+    /* ==========================================
+       2. QISM: USER RO'YXATDAN O'TISH (AUTH)
+       ========================================== */
+    .auth-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+      background: radial-gradient(circle at center, rgba(0,255,102,0.05) 0%, rgba(15,17,21,1) 70%);
+    }
+
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .auth-card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .auth-card p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent-green);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-green-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 255, 102, 0.3);
+    }
+
+    /* ==========================================
+       3. QISM: MASHINA TURLARI VA EHTIYOT QISMLAR
+       ========================================== */
+    .catalog-section {
+      padding: 120px 0 80px;
+      display: none; /* User kirgach ko'rinadi */
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    /* Car Tabs */
+    .car-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .car-tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 12px 24px;
+      border-radius: 30px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .car-tab-btn.active, .car-tab-btn:hover {
+      background: var(--accent-green);
+      color: #000;
+      border-color: var(--accent-green);
+    }
+
+    /* Grid Layout */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .part-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .part-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 255, 102, 0.4);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .part-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #252932;
+    }
+
+    .part-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .part-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .part-model-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: rgba(0, 255, 102, 0.1);
+      color: var(--accent-green);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      width: fit-content;
+    }
+
+    .part-prices {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+      margin-bottom: 15px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .price-row.total {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--accent-green);
+    }
+
+    /* ==========================================
+       4. QISM: SERVIS, USTALAR VA OFIS
+       ========================================== */
+    .service-section {
+      padding: 80px 0;
+      background: #13151b;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .info-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-green);
+    }
+
+    .master-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 12px;
+      background: var(--bg-input);
+      border-radius: 12px;
+    }
+
+    .master-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-green);
+      color: #000;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,255,102,0.4);
+      display: none;
+      z-index: 1000;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">
+        SEVEN <span>7</span> TUNING
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#catalog-sec"><i data-lucide="wrench"></i> Ehtiyot qismlar</a></li>
+        <li><a href="#service-sec"><i data-lucide="shield-check"></i> Servis & Ustalar</a></li>
+        <li><a href="#contact-sec"><i data-lucide="map-pin"></i> Ofis & Aloqa</a></li>
+      </ul>
+
+      <div class="user-badge" id="userDisplay">
+        <i data-lucide="user"></i>
+        <span id="userNameText">Mehmon</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1-QISM: USER RO'YXATDAN O'TISH (AUTH SECTION) -->
+  <section class="auth-section" id="authSection">
+    <div class="auth-card animate-fade">
+      <div style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 10px;">
+        <i data-lucide="car-front"></i>
+      </div>
+      <h2>Xush Kelibsiz!</h2>
+      <p>Chery avtomobilingiz uchun sifatli ehtiyot qismlarini tanlash uchun ma'lumotlaringizni kiriting.</p>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Ismingiz</label>
+          <input type="text" id="firstName" placeholder="Masalan: Ali" required>
+        </div>
+        <div class="form-group">
+          <label>Familiyangiz</label>
+          <input type="text" id="lastName" placeholder="Masalan: Valiye" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon raqamingiz</label>
+          <input type="tel" id="phoneNum" placeholder="+998 90 123 45 67" required>
+        </div>
+        <button type="submit" class="btn-primary">
+          <i data-lucide="log-in"></i> Tizimga Kirish
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2-QISM: MASHINA TURLARI VA EHTIYOT QISMLARI KATALOGI -->
+  <section class="catalog-section" id="catalogSection">
+    <div class="container">
+      <div class="section-title">
+        <h2>Chery Modellari & Qismlari</h2>
+        <p>Kerakli modelni tanlang va original ehtiyot qismlar narxlarini ko'ring</p>
+      </div>
+
+      <!-- Car Selection Tabs -->
+      <div class="car-tabs" id="carTabs">
+        <button class="car-tab-btn active" data-model="all"><i data-lucide="layers"></i> Barchasi</button>
+        <button class="car-tab-btn" data-model="Tiggo 7 Pro"><i data-lucide="car"></i> Tiggo 7 Pro</button>
+        <button class="car-tab-btn" data-model="Tiggo 8"><i data-lucide="car"></i> Tiggo 8</button>
+        <button class="car-tab-btn" data-model="Tiggo 8 Pro"><i data-lucide="car"></i> Tiggo 8 Pro</button>
+        <button class="car-tab-btn" data-model="Arrizo 6"><i data-lucide="car"></i> Arrizo 6</button>
+        <button class="car-tab-btn" data-model="Arrizo 8 Pro"><i data-lucide="car"></i> Arrizo 8 Pro</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="parts-grid" id="partsContainer">
+        <!-- JS orqali dinamik to'ldiriladi -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-QISM: SERVIS, USTALAR VA YETKAZIB BERISH (OFFICE) -->
+  <section class="service-section" id="serviceSection">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kafolatlangan Servis & Rasmiy Ofis</h2>
+        <p>Professional ustalarimiz va yetkazib berish xizmati bilan tanishing</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Ustalar haqida -->
+        <div class="info-box">
+          <h3><i data-lucide="award"></i> Tajribali Chery Ustalar</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Bizning barcha mexaniklarimiz Chery avtosalonlarida maxsus attestatsiyadan o'tgan va 5 yildan ortiq tajribaga ega. O'rnatib berish xizmati 100% kafolatlanadi.
+          </p>
+
+          <div class="master-card">
+            <div class="master-avatar">S.A</div>
+            <div>
+              <h4 style="font-size: 0.95rem;">Sardor Axmedov</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Bosh diagnostik va dvigatel ustasi (7 yil tajriba)</p>
+            </div>
+          </div>
+
+          <div class="master-card">
+            <div class="master-avatar">J.R</div>
+            <div>
+              <h4 style="font-size: 0.95rem;">Javohir Rustamov</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Xodovoy va podveska mutaxassisi (5 yil tajriba)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ofis va Yetkazib berish -->
+        <div class="info-box" id="contact-sec">
+          <h3><i data-lucide="truck"></i> Ofis & Yetkazib Berish</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">
+            Toshkent bo'ylab 2 soat ichida, viloyatlarga esa 24 soat ichida yetkazib beramiz.
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 8px;"><i data-lucide="map-pin" style="color: var(--accent-green); width: 16px;"></i> <strong>Manzil:</strong> Toshkent sh., Sergeli mashina bozori, 7-do'kon (Seven Tuning)</p>
+          <p style="font-size: 0.9rem; margin-bottom: 8px;"><i data-lucide="phone" style="color: var(--accent-green); width: 16px;"></i> <strong>Telefon:</strong> +998 (90) 777-77-77</p>
+          <p style="font-size: 0.9rem;"><i data-lucide="clock" style="color: var(--accent-green); width: 16px;"></i> <strong>Ish vaqti:</strong> 09:00 - 19:00 (Haftasiz dam olishsiz)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toastMsg">Xabar saqlandi!</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 SEVEN 7 TUNING. Barcha huquqlar hamkorlikda himoyalangan.</p>
+  </footer>
+
+  <!-- JAVASCRIPT KODI -->
+  <script>
+    /* ===================================================
+       1. EHTIYOT QISMLAR MA'LUMOTLAR BAZASI (OSON O'ZGARTIRISH)
+       Siz shu yerdagi narxlarni xohlagancha o'zgartirishingiz mumkin!
+       =================================================== */
+    const partsData = [
+      {
+        id: 1,
+        title: "Old tormoz kalodkalari (Brake Pads)",
+        model: "Tiggo 7 Pro",
+        partPrice: 450000,
+        installPrice: 80000,
+        img: "https://images.unsplash.com/photo-1600706432521-7be6777b2e42?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 2,
+        title: "Old Amortizator (Original)",
+        model: "Tiggo 8 Pro",
+        partPrice: 1200000,
+        installPrice: 150000,
+        img: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 3,
+        title: "Moy filtri (Oil Filter)",
+        model: "Arrizo 6",
+        partPrice: 90000,
+        installPrice: 30000,
+        img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 4,
+        title: "LED Fara majmuasi (Old Chiroq)",
+        model: "Arrizo 8 Pro",
+        partPrice: 3800000,
+        installPrice: 200000,
+        img: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 5,
+        title: "Havo filtri (Air Filter)",
+        model: "Tiggo 8",
+        partPrice: 110000,
+        installPrice: 20000,
+        img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 6,
+        title: "Turbina komplekti (1.5T / 1.6T)",
+        model: "Tiggo 7 Pro",
+        partPrice: 6500000,
+        installPrice: 500000,
+        img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=500&q=80"
+      }
+    ];
+
+    // Dom elementlarini tanlab olish
+    const authSection = document.getElementById('authSection');
+    const catalogSection = document.getElementById('catalogSection');
+    const serviceSection = document.getElementById('serviceSection');
+    const loginForm = document.getElementById('loginForm');
+    const userDisplay = document.getElementById('userDisplay');
+    const userNameText = document.getElementById('userNameText');
+    const partsContainer = document.getElementById('partsContainer');
+    const carTabs = document.getElementById('carTabs');
+    const toastMsg = document.getElementById('toastMsg');
+
+    /* ===================================================
+       2. LOCALSTORAGE BILAN ISHLASH (USER & MUKAMMAL SAQLASH)
+       =================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      checkUserStatus();
+      renderParts('all');
+    });
+
+    // User saqlanganini tekshirish
+    function checkUserStatus() {
+      const savedUser = localStorage.getItem('seven_tuning_user');
+      if (savedUser) {
+        const userData = JSON.parse(savedUser);
+        userNameText.textContent = `${userData.firstName} ${userData.lastName}`;
+        
+        // Ekranlarni ko'rsatish
+        authSection.style.display = 'none';
+        catalogSection.style.display = 'block';
+        serviceSection.style.display = 'block';
+      } else {
+        authSection.style.display = 'flex';
+        catalogSection.style.display = 'none';
+        serviceSection.style.display = 'none';
+      }
+    }
+
+    // Form topshirilganda LocalStorage ga saqlash
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const userData = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        phone: document.getElementById('phoneNum').value.trim(),
+        loginTime: new Date().toISOString()
+      };
+
+      // LocalStorage ga abadiy saqlaymiz
+      localStorage.setItem('seven_tuning_user', JSON.stringify(userData));
+      
+      showToast(`Xush kelibsiz, ${userData.firstName}!`);
+      checkUserStatus();
+    });
+
+    /* ===================================================
+       3. MAHSULOTLARNI RENDER QILISH VA FILTRLASH
+       =================================================== */
+    function renderParts(filterModel) {
+      partsContainer.innerHTML = '';
+
+      const filtered = filterModel === 'all' 
+        ? partsData 
+        : partsData.filter(item => item.model === filterModel);
+
+      if (filtered.length === 0) {
+        partsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Ushbu model uchun ehtiyot qism Hozircha mavjud emas.</p>`;
+        return;
+      }
+
+      filtered.forEach(part => {
+        const card = document.createElement('div');
+        card.className = 'part-card animate-fade';
+        
+        // Pul formatini chiroyli qilish
+        const formattedPartPrice = part.partPrice.toLocaleString('uz-UZ');
+        const formattedInstallPrice = part.installPrice.toLocaleString('uz-UZ');
+        const formattedTotal = (part.partPrice + part.installPrice).toLocaleString('uz-UZ');
+
+        card.innerHTML = `
+          <img src="${part.img}" alt="${part.title}" class="part-img">
+          <div class="part-body">
+            <span class="part-model-tag">${part.model}</span>
+            <h3 class="part-title">${part.title}</h3>
+            
+            <div class="part-prices">
+              <div class="price-row">
+                <span>Ehtiyot qism:</span>
+                <span><strong>${formattedPartPrice} so'm</strong></span>
+              </div>
+              <div class="price-row">
+                <span>O'rnatib berish:</span>
+                <span style="color: #60a5fa;">+${formattedInstallPrice} so'm</span>
+              </div>
+              <div class="price-row total">
+                <span>Jami (O'rnatish bilan):</span>
+                <span>${formattedTotal} so'm</span>
+              </div>
+            </div>
+
+            <button class="btn-primary" onclick="buyProduct('${part.title}', '${formattedTotal}')">
+              <i data-lucide="shopping-cart"></i> Buyurtma Berish
+            </button>
+          </div>
+        `;
+        partsContainer.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // Tablar o'rtasida filtrlash
+    carTabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.car-tab-btn');
+      if (!btn) return;
+
+      document.querySelectorAll('.car-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selectedModel = btn.getAttribute('data-model');
+      
+      // Oxirgi ko'rilgan modelni saqlab qo'yish
+      localStorage.setItem('seven_tuning_last_model', selectedModel);
+      
+      renderParts(selectedModel);
+    });
+
+    /* ===================================================
+       4. YORDAMCHI FUNKSIYALAR & BILDIRISHNOMALAR
+       =================================================== */
+    function buyProduct(title, price) {
+      // Tanlangan buyurtmani localStorage ga saqlab qo'yish
+      const orders = JSON.parse(localStorage.getItem('seven_tuning_orders') || '[]');
+      orders.push({ title, price, date: new Date().toLocaleString() });
+      localStorage.setItem('seven_tuning_orders', JSON.stringify(orders));
+
+      showToast(`" ${title} " buyurtma savatchaga olindi!`);
+    }
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toastMsg.style.display = 'block';
+      setTimeout(() => {
+        toastMsg.style.display = 'none';
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
